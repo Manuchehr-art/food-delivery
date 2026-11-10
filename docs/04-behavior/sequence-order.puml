@@ -1,0 +1,28 @@
+@startuml sequence-order
+title Согласование заказа менеджером
+
+actor "Менеджер\n(manager)" as M
+participant "Браузер" as B
+participant "OrderController" as C
+participant "OrderRepository" as Repo
+database "MySQL\nfood_delivery" as DB
+
+M -> B: нажимает «Подтвердить заказ №123»
+B -> C: POST /orders/123/accept (csrf_token)
+C -> C: проверить роль manager и валидность CSRF
+C -> Repo: findById(123)
+Repo -> DB: SELECT * FROM orders WHERE id = 123
+DB --> Repo: строка заказа (status = 'new')
+Repo --> C: объект заказа
+
+alt заказ существует и status == 'new'
+  C -> Repo: updateStatus(123, 'accepted', manager_id)
+  Repo -> DB: UPDATE orders SET status='accepted', manager_id=? WHERE id=123
+  DB --> Repo: 1 row affected
+  C --> B: 302 Redirect / «Заказ успешно принят»
+else заказ не найден или статус не 'new'
+  C --> B: 400 Bad Request / «Невозможно подтвердить заказ»
+end
+
+B --> M: обновлённый список заказов
+@enduml
