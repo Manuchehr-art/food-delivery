@@ -1,0 +1,139 @@
+@startuml class
+title food-delivery: диаграмма классов
+
+skinparam classAttributeIconSize 0
+hide empty members
+
+package "Доменная модель" {
+
+    class Client <<entity>> {
+        +id: int
+        +fullName: string
+        +phone: string
+        +email: string
+        -passwordHash: string
+        +registeredAt: date
+    }
+
+    class Restaurant <<entity>> {
+        +id: int
+        +name: string
+        +address: string
+        +phone: string
+        +workHours: string
+        +rating: float
+    }
+
+    class Dish <<entity>> {
+        +id: int
+        +name: string
+        +description: string
+        +price: decimal
+        +category: string
+        +isAvailable: bool
+    }
+
+    class Order <<entity>> {
+        +id: int
+        +number: string
+        +totalAmount: decimal
+        +status: OrderStatus
+        +paymentMethod: string
+        +createdAt: datetime
+        +deliveredAt: ?datetime
+        +total(): decimal
+    }
+
+    class OrderItem <<entity>> {
+        +id: int
+        +quantity: int
+        +price: decimal
+        +subtotal(): decimal
+    }
+
+    class Courier <<entity>> {
+        +id: int
+        +fullName: string
+        +phone: string
+        +transport: string
+        +isBusy: bool
+        +rating: float
+    }
+
+    class Address <<entity>> {
+        +id: int
+        +street: string
+        +building: string
+        +apartment: ?string
+        +lat: float
+        +lon: float
+    }
+
+    class Review <<entity>> {
+        +id: int
+        +rating: int
+        +comment: string
+        +createdAt: date
+    }
+
+    enum OrderStatus {
+        new
+        accepted
+        cooking
+        on_the_way
+        delivered
+        cancelled
+    }
+
+    enum UserRole {
+        admin
+        manager
+        courier
+        client
+    }
+}
+
+' === Связи между сущностями ===
+
+Restaurant "1" *-- "1..*" Dish : содержит меню
+Order "1" *-- "1..*" OrderItem : состоит из
+Client "1" -- "0..*" Order : оформляет
+Client "1" -- "0..*" Address : имеет адреса
+Client "1" -- "0..*" Review : оставляет
+Order "1" -- "0..1" Courier : доставляет
+Order "1" -- "0..1" Review : имеет отзыв
+Restaurant "1" o-- "0..*" Courier : обслуживается
+
+Order ..> OrderStatus
+
+package "Приложение (src/)" {
+
+    class OrderController {
+        -repo: OrderRepository
+        -auth: Auth
+        +index(): void
+        +create(): void
+        +accept(id: int): void
+        +updateStatus(id: int, status: string): void
+    }
+
+    class OrderRepository {
+        -db: Database
+        +findById(id: int): ?array
+        +findByClient(clientId: int): array
+        +create(data: array): int
+        +updateStatus(id: int, status: string, userId: int): bool
+    }
+
+    class Database {
+        -pdo: PDO
+        +pdo(): PDO
+    }
+}
+
+OrderController --> OrderRepository
+OrderController --> Database
+OrderRepository --> Database
+OrderRepository ..> Order : читает/пишет
+
+@enduml

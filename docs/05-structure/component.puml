@@ -1,0 +1,48 @@
+@startuml component
+title food-delivery: компоненты (MVC, три уровня)
+
+node "Клиент" {
+    [Браузер\n(HTML, Bootstrap 5.3, app.js)] as Browser
+}
+
+node "Веб-сервер (Apache/Nginx + PHP-FPM)" {
+
+    package "Уровень представления" {
+        [public/index.php\n(front controller)] as Front
+        [views/*.php\n(шаблоны)] as Views
+        [Core\\View] as View
+    }
+
+    package "Уровень логики" {
+        [Core\\Router] as Router
+        [Controllers\n(Order, Restaurant, Dish,\nAuth, Courier, Review)] as Controllers
+        [Core\\Auth, Session,\nCsrf, Validator] as Services
+    }
+
+    package "Уровень доступа к данным" {
+        [Repositories\n(Order, Restaurant, Dish,\nCourier, User)] as Repos
+        [Core\\Database\n(PDO)] as Db
+    }
+}
+
+database "MySQL\nfood_delivery" as MySQL
+
+Browser --> Front : HTTP (GET/POST)
+Front --> Router : маршрутизация
+Router --> Controllers : вызов метода
+Controllers --> Services : проверка прав/CSRF
+Controllers --> Repos : запрос данных
+Controllers --> View : отрисовка
+View --> Views : подключение шаблона
+Repos --> Db : SQL-запросы
+Db --> MySQL : PDO, TCP 3306
+
+Browser ..> Front : fetch /api/orders (JSON)
+
+legend right
+  Model      = Repositories + Database
+  View       = Core\\View + views/*.php
+  Controller = Controllers (через Router)
+endlegend
+
+@enduml
