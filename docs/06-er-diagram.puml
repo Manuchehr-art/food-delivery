@@ -1,0 +1,131 @@
+@startuml er-diagram
+title food_delivery: логическая модель (ER, Crow's Foot)
+hide circle
+skinparam linetype ortho
+
+entity users {
+  * id: INT <<PK>>
+  --
+  * username: VARCHAR(50) <<UQ>>
+  * password_hash: VARCHAR(255)
+  * role: ENUM
+  * is_active: TINYINT(1)
+  * created_at: DATETIME
+  last_login_at: DATETIME
+}
+
+entity clients {
+  * id: INT <<PK>>
+  --
+  user_id: INT <<FK, UQ>>
+  * last_name: VARCHAR(60)
+  * first_name: VARCHAR(60)
+  middle_name: VARCHAR(60)
+  * phone: VARCHAR(20) <<UQ>>
+  email: VARCHAR(120) <<UQ>>
+  * created_at: DATETIME
+}
+
+entity client_phones {
+  * id: INT <<PK>>
+  --
+  * client_id: INT <<FK>>
+  * phone: VARCHAR(20)
+}
+
+entity addresses {
+  * id: INT <<PK>>
+  --
+  * client_id: INT <<FK>>
+  * street: VARCHAR(150)
+  * building: VARCHAR(10)
+  apartment: VARCHAR(10)
+  * lat: DECIMAL(9,6)
+  * lon: DECIMAL(9,6)
+  comment: VARCHAR(255)
+}
+
+entity restaurants {
+  * id: INT <<PK>>
+  --
+  * name: VARCHAR(150) <<UQ>>
+  * address: VARCHAR(200)
+  * phone: VARCHAR(20)
+  * work_hours: VARCHAR(50)
+  * min_order_amount: DECIMAL(10,2)
+  * delivery_radius_km: DECIMAL(5,2)
+}
+
+entity dishes {
+  * id: INT <<PK>>
+  --
+  * restaurant_id: INT <<FK>>
+  * name: VARCHAR(150)
+  description: VARCHAR(500)
+  * category: ENUM
+  * price: DECIMAL(10,2)
+  * is_available: TINYINT(1)
+}
+
+entity couriers {
+  * id: INT <<PK>>
+  --
+  user_id: INT <<FK, UQ>>
+  * full_name: VARCHAR(150)
+  * phone: VARCHAR(20) <<UQ>>
+  * transport: ENUM
+  * is_busy: TINYINT(1)
+}
+
+entity orders {
+  * id: INT <<PK>>
+  --
+  * number: VARCHAR(30) <<UQ>>
+  * client_id: INT <<FK>>
+  * restaurant_id: INT <<FK>>
+  * address_id: INT <<FK>>
+  courier_id: INT <<FK>>
+  manager_id: INT <<FK>>
+  * status: ENUM
+  * payment_method: ENUM
+  comment: VARCHAR(255)
+  * created_at: DATETIME
+  accepted_at: DATETIME
+  delivered_at: DATETIME
+}
+
+entity order_items {
+  * id: INT <<PK>>
+  --
+  * order_id: INT <<FK>>
+  * dish_id: INT <<FK>>
+  * quantity: INT
+  * price: DECIMAL(10,2)
+}
+
+entity reviews {
+  * id: INT <<PK>>
+  --
+  * order_id: INT <<FK, UQ>>
+  * client_id: INT <<FK>>
+  * rating: TINYINT
+  comment: VARCHAR(500)
+  * created_at: DATETIME
+}
+
+users ||--o| clients : user_id
+users ||--o| couriers : user_id
+users ||--o{ orders : manager_id
+clients ||--o{ client_phones
+clients ||--o{ addresses
+clients ||--o{ orders
+clients ||--o{ reviews
+restaurants ||--|{ dishes
+restaurants ||--o{ orders
+addresses ||--o{ orders
+couriers |o--o{ orders : courier_id
+orders ||--|{ order_items
+dishes ||--o{ order_items
+orders ||--o| reviews : order_id
+
+@enduml
