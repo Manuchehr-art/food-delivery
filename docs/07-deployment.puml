@@ -1,0 +1,25 @@
+@startuml deployment
+title food-delivery: диаграмма развёртывания
+
+node "Компьютер разработчика (XAMPP)" as pc {
+
+    node "Apache 2.4" as apache {
+        artifact "food-delivery/\n(public/, src/, views/)" as app
+    }
+
+    node "PHP 8.2" as php {
+        artifact "config/config.php" as cfg
+    }
+
+    database "MySQL 8.0\nfood_delivery\n(utf8mb4)" as db
+}
+
+node "ПК / Смартфон клиента" as client {
+    artifact "Браузер\n(Chrome / Safari)" as browser
+}
+
+browser --> apache : HTTP :80
+apache --> php : модуль mod_php
+php --> db : PDO MySQL\n127.0.0.1:3306
+
+@enduml
