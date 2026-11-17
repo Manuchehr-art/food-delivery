@@ -1,0 +1,274 @@
+/* public/css/style.css - Стили ИС "Болаззат" */
+
+:root {
+    --brand-primary: #ea580c;
+    --brand-primary-hover: #c2410c;
+    --brand-secondary: #0284c7;
+    --brand-success: #16a34a;
+    --brand-dark: #0f172a;
+    --brand-light: #f8fafc;
+    --brand-card-bg: #ffffff;
+    --brand-border: #e2e8f0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #334155;
+    background-color: #f8fafc;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    flex: 1 0 auto;
+}
+
+/* Навбар */
+.navbar-brand-logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--brand-primary) !important;
+    letter-spacing: -0.5px;
+}
+
+.navbar-brand-logo span {
+    color: #0f172a;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: #475569;
+    transition: color 0.15s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--brand-primary) !important;
+}
+
+/* Кнопки */
+.btn-primary {
+    background-color: var(--brand-primary);
+    border-color: var(--brand-primary);
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: var(--brand-primary-hover);
+    border-color: var(--brand-primary-hover);
+}
+
+.btn-outline-primary {
+    color: var(--brand-primary);
+    border-color: var(--brand-primary);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--brand-primary);
+    border-color: var(--brand-primary);
+    color: #fff;
+}
+
+/* Hero секция */
+.hero-section {
+    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+    border-radius: 1.5rem;
+    padding: 3rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-title {
+    font-size: 2.75rem;
+    font-weight: 800;
+    line-height: 1.15;
+    color: #1e293b;
+}
+
+.hero-subtitle {
+    font-size: 1.15rem;
+    color: #64748b;
+}
+
+/* Категории блюд */
+.category-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 9999px;
+    background-color: #ffffff;
+    border: 1px solid var(--brand-border);
+    color: #475569;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.category-pill:hover, .category-pill.active {
+    background-color: var(--brand-primary);
+    border-color: var(--brand-primary);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(234, 88, 12, 0.25);
+}
+
+/* Карточки блюд и ресторанов */
+.dish-card, .restaurant-card {
+    background: #ffffff;
+    border: 1px solid #f1f5f9;
+    border-radius: 1rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.dish-card:hover, .restaurant-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.1);
+}
+
+.dish-thumb {
+    height: 160px;
+    background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    color: #c2410c;
+}
+
+.restaurant-thumb {
+    height: 140px;
+    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: #0369a1;
+}
+
+.dish-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+/* Таймлайн статуса заказа */
+.status-timeline {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin: 2rem 0;
+}
+
+.status-timeline::before {
+    content: '';
+    position: absolute;
+    top: 24px;
+    left: 20px;
+    right: 20px;
+    height: 4px;
+    background: #e2e8f0;
+    z-index: 1;
+}
+
+.timeline-step {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    flex: 1;
+}
+
+.timeline-step .step-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 3px solid #cbd5e1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    color: #94a3b8;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.timeline-step.completed .step-icon {
+    border-color: var(--brand-success);
+    background: var(--brand-success);
+    color: #ffffff;
+}
+
+.timeline-step.active .step-icon {
+    border-color: var(--brand-primary);
+    background: #fff;
+    color: var(--brand-primary);
+    box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.2);
+    animation: pulse 2s infinite;
+}
+
+.timeline-step .step-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.timeline-step.active .step-label,
+.timeline-step.completed .step-label {
+    color: #0f172a;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
+/* Фиолетовый бэдж для "в пути" */
+.bg-purple {
+    background-color: #8b5cf6 !important;
+}
+
+/* Админ-панель сайдбар */
+.admin-sidebar {
+    background: #0f172a;
+    color: #e2e8f0;
+    min-height: 100vh;
+}
+
+.admin-sidebar a {
+    color: #94a3b8;
+    text-decoration: none;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 500;
+    transition: all 0.15s ease;
+}
+
+.admin-sidebar a:hover, .admin-sidebar a.active {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.admin-sidebar a.active {
+    background-color: var(--brand-primary);
+}
+
+.kpi-card {
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.kpi-card:hover {
+    transform: translateY(-2px);
+}

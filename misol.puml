@@ -1,0 +1,78 @@
+@startuml component-diagram
+title Схемаи меъмории компонентҳои системаи "Болаззат" (MVC)
+
+skinparam componentStyle rectangle
+skinparam backgroundColor #FEFEFE
+skinparam arrowColor #444444
+
+' --- Қабати 1: Намуди зоҳирӣ (Frontend) ---
+package "Қабати намуди зоҳирӣ (View / Web UI)" {
+  component "Портали муштарӣ\n(HTML/CSS/JS)" as client_ui
+  component "Панели менеджер\n(HTML/CSS/JS)" as manager_ui
+  component "Панели курер\n(HTML/CSS/JS)" as courier_ui
+  component "Панели администратор\n(HTML/CSS/JS)" as admin_ui
+}
+
+' --- Қабати 2: Мантиқи бизнес (Backend PHP) ---
+package "Қабати мантиқи бизнес (PHP MVC)" {
+  
+  package "Контроллерҳо (Controllers)" {
+    component "OrderController" as order_ctrl
+    component "MenuController" as menu_ctrl
+    component "AuthController" as auth_ctrl
+    component "DeliveryController" as delivery_ctrl
+  }
+
+  package "Сервисҳо (Business Logic)" {
+    component "OrderService" as order_svc
+    component "PaymentService" as pay_svc
+    component "NotificationService" as notif_svc
+  }
+
+  package "Моделҳо ва Репозиторияҳо (Data Access)" {
+    component "OrderRepository" as order_repo
+    component "UserRepository" as user_repo
+    component "RestaurantRepository" as rest_repo
+  }
+}
+
+' --- Қабати 3: Пойгоҳи додаҳо ---
+package "Қабати додаҳо (Data Layer)" {
+  database "Пойгоҳи додаҳои MySQL" as db {
+    component "phpMyAdmin" as pma
+  }
+}
+
+' --- Қабати 4: Системаҳои беруна ---
+package "Системаҳои беруна (External APIs)" {
+  component "Дарвозаи пардохт\n(Alif / DC)" as payment_api
+  component "Хизматрасонии SMS" as sms_api
+}
+
+' --- Алоқаҳо (Dependencies) ---
+client_ui --> order_ctrl : <<HTTP>>
+client_ui --> menu_ctrl : <<HTTP>>
+manager_ui --> order_ctrl : <<HTTP>>
+manager_ui --> delivery_ctrl : <<HTTP>>
+courier_ui --> delivery_ctrl : <<HTTP>>
+admin_ui --> menu_ctrl : <<HTTP>>
+admin_ui --> order_ctrl : <<HTTP>>
+
+order_ctrl --> order_svc
+menu_ctrl --> order_svc
+delivery_ctrl --> order_svc
+auth_ctrl --> user_repo
+
+order_svc --> order_repo
+order_svc --> pay_svc
+order_svc --> notif_svc
+
+pay_svc --> payment_api : <<API>>
+notif_svc --> sms_api : <<API>>
+
+order_repo --> db : <<SQL>>
+user_repo --> db : <<SQL>>
+rest_repo --> db : <<SQL>>
+pma --> db : <<Идоракунӣ>>
+
+@enduml
