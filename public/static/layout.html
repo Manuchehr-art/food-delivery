@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="tg">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FoodGo — Расонидани хӯрок</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Unbounded:wght@700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin="anonymous">
+  <link href="../assets/css/app.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg app-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="layout.html">Food<span>Go</span> · Болаззат</a>
+    <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse" data-bs-target="#mainNav"
+            aria-controls="mainNav" aria-expanded="false" aria-label="Меню">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="layout.html">Асосӣ</a></li>
+        <li class="nav-item"><a class="nav-link" href="restaurants.html">Ресторанҳо</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Тахфифҳо</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Дар бораи мо</a></li>
+      </ul>
+      <div class="d-flex gap-2">
+        <a class="btn btn-primary" href="#">Ворид шудан</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="container py-4">
+
+  <section class="hero text-center py-4">
+    <h1>Хӯроки гарм,<br>то дари хонаатон</h1>
+    <p class="text-muted mx-auto" style="max-width:520px">
+      Аз якчанд қаҳвахона интихоб кунед — курйери озод фармоишро мерасонад.
+    </p>
+    <form class="row g-2 justify-content-center mt-4" role="search">
+      <div class="col-12 col-md-8 col-lg-6">
+        <label for="qs" class="visually-hidden">Ҷустуҷӯи қаҳвахона</label>
+        <input id="qs" class="form-control" type="search" placeholder="🔍 Қаҳвахона ҷустуҷӯ кунед…">
+      </div>
+      <div class="col-12 col-md-4 col-lg-2 d-grid">
+        <button class="btn btn-primary" type="submit">Ҷустуҷӯ</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="my-4">
+    <div class="chips justify-content-center">
+      <button class="chip active">Ҳама</button>
+      <button class="chip">Пицца</button>
+      <button class="chip">Бургер</button>
+      <button class="chip">Миллӣ</button>
+      <button class="chip">Салат</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Ресторанҳои маъмул</h2>
+    <div class="row g-4">
+
+      <div class="col-12 col-sm-6 col-xl-3">
+        <article class="card restaurant-card h-100">
+          <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400" alt="Пиццаи Олӣ">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h3 class="h6 mb-0">Пиццаи Олӣ</h3>
+              <span class="text-warning">★ 4.8</span>
+            </div>
+            <p class="text-muted small mb-3">Пиццаи итолиёвӣ бо панири зиёд</p>
+            <span class="badge bg-primary">Пицца</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-sm-6 col-xl-3">
+        <article class="card restaurant-card h-100">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400" alt="Бургер Хаус">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h3 class="h6 mb-0">Бургер Хаус</h3>
+              <span class="text-warning">★ 4.9</span>
+            </div>
+            <p class="text-muted small mb-3">Бӯргери гӯшти тоза бо соуси махсус</p>
+            <span class="badge bg-primary">Бургер</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-sm-6 col-xl-3">
+        <article class="card restaurant-card h-100">
+          <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400" alt="Оши Марказӣ">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h3 class="h6 mb-0">Оши Марказӣ</h3>
+              <span class="text-warning">★ 4.7</span>
+            </div>
+            <p class="text-muted small mb-3">Хӯроки миллӣ ва анъанавӣ</p>
+            <span class="badge bg-primary">Миллӣ</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-sm-6 col-xl-3">
+        <article class="card restaurant-card h-100">
+          <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400" alt="Салати Сабз">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h3 class="h6 mb-0">Салати Сабз</h3>
+              <span class="text-warning">★ 4.6</span>
+            </div>
+            <p class="text-muted small mb-3">Салатҳои тоза ва солим</p>
+            <span class="badge bg-primary">Салат</span>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="app-footer">
+  <div class="container text-center">
+    <p class="mb-0">FoodGo © 2026 — Технология ва забонҳои интернет барномасозӣ</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+</html>

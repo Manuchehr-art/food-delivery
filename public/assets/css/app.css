@@ -1,0 +1,265 @@
+/* public/assets/css/app.css — стили приложения поверх Bootstrap 5.3 */
+
+/* ===== Токены дизайна из UI-kit ===== */
+:root {
+  --bg: #150d26;
+  --card: rgba(255, 255, 255, 0.07);
+  --line: rgba(255, 255, 255, 0.13);
+  --tx: #f6f1ff;
+  --mu: #a99fc4;
+  --sf: #ffb703;
+  --mint: #3ddc97;
+  --co: #ff5d73;
+  --r: 22px;
+
+  /* Переопределение переменных Bootstrap */
+  --bs-body-font-family: "Manrope", system-ui, sans-serif;
+  --bs-body-font-size: 1rem;
+  --bs-body-line-height: 1.5;
+  --bs-body-color: var(--tx);
+  --bs-body-bg: var(--bg);
+  --bs-border-color: var(--line);
+  --bs-border-radius: var(--r);
+  --bs-link-color: var(--sf);
+  --bs-link-color-rgb: 255, 183, 3;
+  --bs-primary: var(--sf);
+  --bs-primary-rgb: 255, 183, 3;
+  --bs-success: var(--mint);
+  --bs-danger: var(--co);
+  --bs-secondary: var(--mu);
+}
+
+/* ===== Типографика ===== */
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--tx);
+}
+
+h1, h2, h3, .navbar-brand {
+  font-family: "Unbounded", sans-serif;
+  font-weight: 700;
+}
+
+h1 { font-size: clamp(1.75rem, 4vw, 3rem); line-height: 1.1; }
+h2 { font-size: 1.5rem; margin: 1.5rem 0 1rem; }
+.text-muted { color: var(--mu) !important; }
+
+/* ===== Кнопки ===== */
+.btn-primary {
+  --bs-btn-bg: var(--sf);
+  --bs-btn-border-color: var(--sf);
+  --bs-btn-color: #2b1700;
+  --bs-btn-hover-bg: #e5a300;
+  --bs-btn-hover-border-color: #e5a300;
+  --bs-btn-hover-color: #2b1700;
+  border-radius: 99px;
+  font-weight: 700;
+}
+
+.btn-outline-light {
+  --bs-btn-color: var(--tx);
+  --bs-btn-border-color: var(--line);
+  --bs-btn-hover-bg: var(--card);
+  --bs-btn-hover-color: var(--tx);
+  border-radius: 99px;
+}
+
+.btn { min-height: 44px; }
+
+/* ===== Навигация ===== */
+.app-navbar {
+  background: rgba(21, 13, 38, 0.85);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--line);
+}
+
+.navbar-brand {
+  color: var(--tx) !important;
+  font-size: 1.4rem;
+}
+
+.navbar-brand span { color: var(--sf); }
+
+.nav-link {
+  color: var(--mu) !important;
+  font-size: 0.9rem;
+}
+
+.nav-link.active,
+.nav-link:hover {
+  color: var(--tx) !important;
+}
+
+/* ===== Карточки ===== */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  color: var(--tx);
+  backdrop-filter: blur(10px);
+}
+
+.card-header {
+  background: transparent;
+  border-bottom: 1px solid var(--line);
+  color: var(--tx);
+  font-family: "Unbounded", sans-serif;
+}
+
+/* ===== Бейджи статусов ===== */
+.badge {
+  font-weight: 700;
+  border-radius: 99px;
+  padding: 0.35em 0.75em;
+}
+
+.badge.bg-primary { background: rgba(255, 183, 3, 0.15) !important; color: var(--sf) !important; }
+.badge.bg-success { background: rgba(61, 220, 151, 0.15) !important; color: var(--mint) !important; }
+.badge.bg-danger  { background: rgba(255, 93, 115, 0.15) !important; color: var(--co) !important; }
+
+/* ===== Поля ввода ===== */
+.form-control, .form-select {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--line);
+  color: var(--tx);
+  border-radius: 14px;
+  min-height: 44px;
+}
+
+.form-control::placeholder { color: var(--mu); }
+
+.form-control:focus, .form-select:focus {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--sf);
+  color: var(--tx);
+  box-shadow: 0 0 0 3px rgba(255, 183, 3, 0.2);
+}
+
+.form-select option { background: var(--bg); color: var(--tx); }
+
+/* ===== Поиск-чипы ===== */
+.chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip {
+  background: var(--card);
+  border: 1px solid var(--line);
+  color: var(--tx);
+  padding: 8px 18px;
+  border-radius: 99px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.chip.active, .chip:hover {
+  background: var(--sf);
+  color: #2b1700;
+  border-color: var(--sf);
+}
+
+/* ===== Карточка ресторана ===== */
+.restaurant-card {
+  transition: transform 0.3s, border-color 0.3s;
+  overflow: hidden;
+}
+.restaurant-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--sf);
+}
+.restaurant-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  background: linear-gradient(135deg, #6c2bd9, var(--co));
+}
+
+/* ===== Таблица ===== */
+.table {
+  color: var(--tx);
+  border-color: var(--line);
+}
+.table thead th {
+  border-color: var(--line);
+  color: var(--mu);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+.table td { border-color: var(--line); vertical-align: middle; }
+
+/* ===== Список определений (dl) ===== */
+.details {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 0.75rem 1.5rem;
+  margin: 0;
+}
+.details dt {
+  color: var(--mu);
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+.details dd {
+  margin: 0;
+  color: var(--tx);
+}
+
+/* ===== Пагинация ===== */
+.pagination .page-link {
+  background: var(--card);
+  border-color: var(--line);
+  color: var(--tx);
+}
+.pagination .page-item.active .page-link {
+  background: var(--sf);
+  border-color: var(--sf);
+  color: #2b1700;
+}
+
+/* ===== Футер ===== */
+.app-footer {
+  border-top: 1px solid var(--line);
+  color: var(--mu);
+  font-size: 0.85rem;
+  margin-top: 3rem;
+  padding: 2rem 0;
+}
+
+/* ===== Доступность ===== */
+:focus-visible {
+  outline: 3px solid rgba(255, 183, 3, 0.5);
+  outline-offset: 2px;
+}
+
+/* ===== Медиазапрос 1: мобильная таблица ===== */
+@media (max-width: 767.98px) {
+  .table-cards thead { display: none; }
+  .table-cards tr {
+    display: block;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--line);
+    background: var(--card);
+    border-radius: 14px;
+    margin-bottom: 12px;
+  }
+  .table-cards td {
+    display: block;
+    border: 0;
+    padding: 0.25rem 0 !important;
+  }
+  .table-cards td[data-label]::before {
+    content: attr(data-label) ": ";
+    color: var(--mu);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .details { grid-template-columns: 1fr; gap: 0.25rem; }
+  .details dd { margin-bottom: 0.75rem; }
+}
+
+/* ===== Медиазапрос 2: узкий экран ===== */
+@media (max-width: 575.98px) {
+  .navbar-brand { font-size: 1.1rem; }
+  h1 { font-size: 1.5rem; }
+  .restaurant-card img { height: 140px; }
+  .stats .card { padding: 1rem; }
+}
