@@ -27,8 +27,7 @@
       <ul class="navbar-nav me-auto">
         <li class="nav-item"><a class="nav-link" href="layout.html">Асосӣ</a></li>
         <li class="nav-item"><a class="nav-link active" aria-current="page" href="restaurants.html">Ресторанҳо</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Тахфифҳо</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Дар бораи мо</a></li>
+        <li class="nav-item"><a class="nav-link" href="order-form.html">Фармоиш</a></li>
       </ul>
       <div class="d-flex gap-2">
         <a class="btn btn-primary" href="#">Ворид шудан</a>
@@ -39,116 +38,74 @@
 
 <main class="container py-4">
 
-  <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
-    <h1 class="me-auto mb-0">Ресторанҳо</h1>
-    <a class="btn btn-primary" href="#">+ Илова кардан</a>
-  </div>
+  <h1 class="mb-4">Ресторанҳо</h1>
 
   <form class="card card-body mb-4" method="get" action="restaurants.html" role="search">
     <div class="row g-2">
-      <div class="col-12 col-md-5">
-        <label class="visually-hidden" for="q">Ҷустуҷӯи ресторан</label>
-        <input class="form-control" type="search" id="q" name="q" placeholder="Ҷустуҷӯи ресторан…">
+      <div class="col-12 col-md-6">
+        <label class="visually-hidden" for="restaurant-search">Поиск по названию</label>
+        <input class="form-control" type="search" id="restaurant-search" name="q"
+               placeholder="Поиск по названию..." autocomplete="off">
       </div>
       <div class="col-6 col-md-3">
         <label class="visually-hidden" for="category">Категория</label>
         <select class="form-select" id="category" name="category">
-          <option value="">Ҳама категорияҳо</option>
-          <option value="pizza">Пицца</option>
-          <option value="burger">Бургер</option>
-          <option value="national">Миллӣ</option>
-          <option value="salad">Салат</option>
+          <option value="">Все категории</option>
+          <option value="Пицца">Пицца</option>
+          <option value="Бургер">Бургер</option>
+          <option value="Миллӣ">Миллӣ</option>
+          <option value="Салат">Салат</option>
+          <option value="Японӣ">Японӣ</option>
         </select>
       </div>
-      <div class="col-6 col-md-2">
-        <label class="visually-hidden" for="status">Ҳолат</label>
-        <select class="form-select" id="status" name="status">
-          <option value="">Ҳама</option>
-          <option value="open">Кушода</option>
-          <option value="closed">Пӯшида</option>
-        </select>
-      </div>
-      <div class="col-12 col-md-2 d-grid">
-        <button class="btn btn-primary" type="submit">Ёфтан</button>
+      <div class="col-6 col-md-3 d-grid">
+        <button class="btn btn-primary" type="submit">Найти</button>
       </div>
     </div>
   </form>
 
+  <p id="restaurant-search-status" class="small text-muted" aria-live="polite"></p>
+
   <div class="card">
     <div class="table-responsive">
-      <table class="table table-hover align-middle table-cards mb-0">
+      <table class="table table-hover align-middle mb-0">
         <thead>
           <tr>
-            <th scope="col">Ном</th>
+            <th scope="col">Название</th>
             <th scope="col">Категория</th>
             <th scope="col">Рейтинг</th>
-            <th scope="col">Ҳолат</th>
-            <th scope="col"><span class="visually-hidden">Амалҳо</span></th>
+            <th scope="col" class="d-none d-md-table-cell">Время</th>
+            <th scope="col">Статус</th>
+            <th scope="col"><span class="visually-hidden">Действия</span></th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td data-label="Ном"><a href="restaurant.html">Пиццаи Олӣ</a></td>
-            <td data-label="Категория">Пицца</td>
-            <td data-label="Рейтинг"><span class="text-warning">★ 4.8</span></td>
-            <td data-label="Ҳолат"><span class="badge bg-success">Кушода</span></td>
-            <td class="text-end"><a class="btn btn-sm btn-outline-light" href="restaurant.html">Кушодан</a></td>
-          </tr>
-          <tr>
-            <td data-label="Ном"><a href="restaurant.html">Бургер Хаус</a></td>
-            <td data-label="Категория">Бургер</td>
-            <td data-label="Рейтинг"><span class="text-warning">★ 4.9</span></td>
-            <td data-label="Ҳолат"><span class="badge bg-success">Кушода</span></td>
-            <td class="text-end"><a class="btn btn-sm btn-outline-light" href="restaurant.html">Кушодан</a></td>
-          </tr>
-          <tr>
-            <td data-label="Ном"><a href="restaurant.html">Оши Марказӣ</a></td>
-            <td data-label="Категория">Миллӣ</td>
-            <td data-label="Рейтинг"><span class="text-warning">★ 4.7</span></td>
-            <td data-label="Ҳолат"><span class="badge bg-success">Кушода</span></td>
-            <td class="text-end"><a class="btn btn-sm btn-outline-light" href="restaurant.html">Кушодан</a></td>
-          </tr>
-          <tr>
-            <td data-label="Ном"><a href="restaurant.html">Салати Сабз</a></td>
-            <td data-label="Категория">Салат</td>
-            <td data-label="Рейтинг"><span class="text-warning">★ 4.6</span></td>
-            <td data-label="Ҳолат"><span class="badge bg-danger">Пӯшида</span></td>
-            <td class="text-end"><a class="btn btn-sm btn-outline-light" href="restaurant.html">Кушодан</a></td>
-          </tr>
-          <tr>
-            <td data-label="Ном"><a href="restaurant.html">Суши Мастер</a></td>
-            <td data-label="Категория">Японӣ</td>
-            <td data-label="Рейтинг"><span class="text-warning">★ 4.5</span></td>
-            <td data-label="Ҳолат"><span class="badge bg-success">Кушода</span></td>
-            <td class="text-end"><a class="btn btn-sm btn-outline-light" href="restaurant.html">Кушодан</a></td>
-          </tr>
+        <tbody id="restaurants-tbody">
+          <!-- Заполняется через JavaScript -->
         </tbody>
       </table>
     </div>
   </div>
 
-  <nav aria-label="Саҳифаҳо" class="mt-4">
+  <nav aria-label="Страницы" class="mt-4">
     <ul class="pagination justify-content-center">
       <li class="page-item disabled"><a class="page-link" href="#">←</a></li>
       <li class="page-item active"><a class="page-link" href="#">1</a></li>
       <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
       <li class="page-item"><a class="page-link" href="#">→</a></li>
     </ul>
   </nav>
-
-  <p class="text-muted text-center">Ёфт шуд: 5 ресторан</p>
 
 </main>
 
 <footer class="app-footer">
   <div class="container text-center">
-    <p class="mb-0">FoodGo © 2026 — Технология ва забонҳои интернет барномасозӣ</p>
+    <p class="mb-0">FoodGo © 2026</p>
   </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+<script type="module" src="../assets/js/app.js"></script>
 </body>
 </html>

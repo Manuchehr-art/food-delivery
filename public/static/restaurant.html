@@ -26,9 +26,8 @@
     <div class="collapse navbar-collapse" id="mainNav">
       <ul class="navbar-nav me-auto">
         <li class="nav-item"><a class="nav-link" href="layout.html">Асосӣ</a></li>
-        <li class="nav-item"><a class="nav-link active" aria-current="page" href="restaurants.html">Ресторанҳо</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Тахфифҳо</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Дар бораи мо</a></li>
+        <li class="nav-item"><a class="nav-link" href="restaurants.html">Ресторанҳо</a></li>
+        <li class="nav-item"><a class="nav-link" href="order-form.html">Фармоиш</a></li>
       </ul>
       <div class="d-flex gap-2">
         <a class="btn btn-primary" href="#">Ворид шудан</a>
@@ -39,9 +38,8 @@
 
 <main class="container py-4">
 
-  <nav aria-label="Навигатсионная цепочка">
+  <nav aria-label="Навигационная цепочка">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="layout.html" class="text-decoration-none" style="color:var(--mu)">Асосӣ</a></li>
       <li class="breadcrumb-item"><a href="restaurants.html" class="text-decoration-none" style="color:var(--mu)">Ресторанҳо</a></li>
       <li class="breadcrumb-item active" aria-current="page">Пиццаи Олӣ</li>
     </ol>
@@ -51,14 +49,12 @@
 
     <aside class="col-12 col-lg-4">
       <div class="card">
-        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600"
-             class="card-img-top" alt="Пиццаи Олӣ"
-             style="height:220px;object-fit:cover">
         <div class="card-body text-center">
           <h2 class="h3">Пиццаи Олӣ</h2>
           <span class="badge bg-primary">Пицца</span>
-          <p class="text-muted mt-2 mb-0">★ 4.8 · 124 баҳо</p>
-          <p class="text-muted small mt-2">🛵 Расонидан: 5 сомонӣ · 30 дақиқа</p>
+          <p class="text-muted mt-2 mb-0">★ 4.8 · 124 отзыва</p>
+          <p class="text-muted small mt-2">🛵 Доставка: 5 сомони · 30 минут</p>
+          <span class="badge bg-success mt-2">Открыто</span>
         </div>
       </div>
     </aside>
@@ -66,16 +62,16 @@
     <section class="col-12 col-lg-8">
 
       <div class="card mb-4">
-        <div class="card-header">Маълумоти ресторан</div>
+        <div class="card-header">Информация о ресторане</div>
         <div class="card-body">
           <dl class="details">
-            <dt>Суроға</dt>
-            <dd>ш. Душанбе, кӯчаи Рӯдакӣ 42</dd>
+            <dt>Адрес</dt>
+            <dd>г. Душанбе, ул. Рудаки 42</dd>
             <dt>Телефон</dt>
             <dd><a href="tel:+992901234567" class="text-decoration-none" style="color:var(--tx)">+992 90 123 45 67</a></dd>
-            <dt>Вақти корӣ</dt>
-            <dd>Ҳар рӯз, 10:00 — 23:00</dd>
-            <dt>Тавсиф</dt>
+            <dt>Время работы</dt>
+            <dd>Ежедневно, 10:00 — 23:00</dd>
+            <dt>Описание</dt>
             <dd>Пиццаи итолиёвӣ бо панири зиёд ва хамири тунук. Мо аз соли 2020 хизмат мерасонем.</dd>
           </dl>
         </div>
@@ -89,10 +85,12 @@
               <article class="card h-100">
                 <div class="card-body">
                   <h3 class="h6">Маргарита</h3>
-                  <p class="text-muted small mb-2">Панир, помидор, райҳон</p>
+                  <p class="text-muted small mb-2">Сыр, помидоры, базилик</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <span style="color:var(--sf);font-weight:700">45.00 с.</span>
-                    <button class="btn btn-sm btn-primary">+ Ба сабад</button>
+                    <button type="button" class="btn btn-sm btn-danger"
+                            data-cancel-url="/orders/1/cancel"
+                            data-order-name="Маргарита #1">Отменить</button>
                   </div>
                 </div>
               </article>
@@ -101,34 +99,12 @@
               <article class="card h-100">
                 <div class="card-body">
                   <h3 class="h6">Пепперони</h3>
-                  <p class="text-muted small mb-2">Колбасаи тез, панир, соус</p>
+                  <p class="text-muted small mb-2">Колбаса, сыр, соус</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <span style="color:var(--sf);font-weight:700">55.00 с.</span>
-                    <button class="btn btn-sm btn-primary">+ Ба сабад</button>
-                  </div>
-                </div>
-              </article>
-            </div>
-            <div class="col-12 col-sm-6">
-              <article class="card h-100">
-                <div class="card-body">
-                  <h3 class="h6">Четыре сыра</h3>
-                  <p class="text-muted small mb-2">Моцарелла, горгонзола, пармезан, чеддер</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <span style="color:var(--sf);font-weight:700">60.00 с.</span>
-                    <button class="btn btn-sm btn-primary">+ Ба сабад</button>
-                  </div>
-                </div>
-              </article>
-            </div>
-            <div class="col-12 col-sm-6">
-              <article class="card h-100">
-                <div class="card-body">
-                  <h3 class="h6">Гавайская</h3>
-                  <p class="text-muted small mb-2">Ветчина, ананас, панир</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <span style="color:var(--sf);font-weight:700">50.00 с.</span>
-                    <button class="btn btn-sm btn-primary">+ Ба сабад</button>
+                    <button type="button" class="btn btn-sm btn-danger"
+                            data-cancel-url="/orders/2/cancel"
+                            data-order-name="Пепперони #2">Отменить</button>
                   </div>
                 </div>
               </article>
@@ -138,7 +114,7 @@
       </div>
 
       <div class="card">
-        <div class="card-header">Шарҳҳо</div>
+        <div class="card-header">Отзывы</div>
         <div class="card-body">
           <div class="mb-3 pb-3" style="border-bottom:1px solid var(--line)">
             <div class="d-flex justify-content-between">
@@ -147,19 +123,12 @@
             </div>
             <p class="text-muted small mb-0 mt-1">Хеле хушмазза! Расонидан тез буд.</p>
           </div>
-          <div class="mb-3 pb-3" style="border-bottom:1px solid var(--line)">
+          <div>
             <div class="d-flex justify-content-between">
               <strong>Мадина К.</strong>
               <span class="text-warning">★★★★☆</span>
             </div>
             <p class="text-muted small mb-0 mt-1">Пицца гарм расид, аммо каме дер шуд.</p>
-          </div>
-          <div>
-            <div class="d-flex justify-content-between">
-              <strong>Алишер Н.</strong>
-              <span class="text-warning">★★★★★</span>
-            </div>
-            <p class="text-muted small mb-0 mt-1">Беҳтарин пицца дар шаҳр!</p>
           </div>
         </div>
       </div>
@@ -168,16 +137,39 @@
 
   </div>
 
+  <!-- Модальное окно подтверждения отмены -->
+  <div class="modal fade" id="confirm-cancel-modal" tabindex="-1"
+       aria-labelledby="confirm-cancel-title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h3" id="confirm-cancel-title">Отменить заказ?</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <p class="mb-0">Заказ <strong id="confirm-cancel-name"></strong> будет отменён. Действие нельзя отменить.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Не отменять</button>
+          <form id="confirm-cancel-form" method="post" action="#">
+            <button type="submit" class="btn btn-danger">Отменить заказ</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </main>
 
 <footer class="app-footer">
   <div class="container text-center">
-    <p class="mb-0">FoodGo © 2026 — Технология ва забонҳои интернет барномасозӣ</p>
+    <p class="mb-0">FoodGo © 2026</p>
   </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+<script type="module" src="../assets/js/app.js"></script>
 </body>
 </html>
